@@ -2,7 +2,7 @@
 #   tiqav から画像を取得する
 #
 # Notes:
-#   ちくわぶ [keyword] で keyword にヒットした画像（ランダムに1枚）のURLを返却
+#   画像 [keyword] で keyword にヒットした画像（ランダムに1枚）のURLを返却
 
 request = require 'request'
 cheerio = require 'cheerio'
