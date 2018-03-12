@@ -16,6 +16,7 @@ module.exports = (robot) ->
     }, (error, response, body)->
       return if error
       $ = cheerio.load body
-      i = Math.floor(Math.random() * $('.gridmodule').length + 1)
-      image = $('.gridmodule').eq(i).find('a').attr('href')
+      $obj = $('.gridmodule').not('#ISw')
+      i = Math.floor(Math.random() * $obj.length + 1)
+      image = $obj.eq(i).find('a').attr('href')
       msg.send image
