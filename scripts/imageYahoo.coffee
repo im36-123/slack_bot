@@ -9,6 +9,7 @@ cheerio = require 'cheerio'
 
 module.exports = (robot) ->
   robot.respond /画像 (.+)/i, (msg) ->
+    msg.send "#{msg.match[1]}の画像ですか。\n少々お待ち下さい"
     keyword = msg.match[1].replace(/\s/ig, '+')
     request {
       uri: 'https://search.yahoo.co.jp/image/search',
