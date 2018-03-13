@@ -25,4 +25,4 @@ module.exports = (robot) ->
       else if $('.noRes')[0]
         msg.send "`#{msg.match[1]}` に一致する画像はみつからなかったようですよ。"
       else
-        msg.send "おや、 `#{msg.match[1]}` を探しに行った亀山くんは、一体どこへ行ったのでしょうか。"
+        msg.send "おや、 `#{msg.match[1]}` を探しに行ったカイトくんは、一体どこへ行ったのでしょうか。"
