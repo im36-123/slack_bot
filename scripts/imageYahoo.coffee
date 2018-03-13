@@ -9,7 +9,7 @@ cheerio = require 'cheerio'
 
 module.exports = (robot) ->
   robot.respond /画像 (.+)/i, (msg) ->
-    msg.send "#{msg.match[1]}の画像ですか。\n少々お待ち下さい。"
+    msg.send "`#{msg.match[1]}` の画像ですか。\n少々お待ち下さい。"
     keyword = msg.match[1].replace(/\s/ig, '+')
     request {
       uri: 'https://search.yahoo.co.jp/image/search',
@@ -20,4 +20,9 @@ module.exports = (robot) ->
       $obj = $('#ISm .gridmodule')
       i = Math.floor(Math.random() * $obj.length + 1)
       image = $obj.eq(i).find('a').attr('href')
+      if image
         msg.send image
+      else if $('.noRes')[0]
+        msg.send "`#{msg.match[1]}` に一致する画像はみつからなかったようですよ。"
+      else
+        msg.send "おや、`#{msg.match[1]}` を探しに行った亀山くんが帰ってきませんねえ。"
