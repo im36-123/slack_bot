@@ -1,9 +1,9 @@
 
-// # Description:
-// #   アルベド語変換
-// #
-// # Notes:
-// #   ja-alb [keyword] で keyword をアルベド語に変換する
+// Description:
+//   アルベド語変換
+//
+// Notes:
+//   ja-alb [keyword] で keyword をアルベド語に変換する
 const ja = [
   'あ', 'い', 'う', 'え', 'お',
   'か', 'き', 'く', 'け', 'こ',
@@ -44,7 +44,7 @@ module.exports = (robot) => {
 robot.respond(/ja-alb (.+)/i, function(msg) {
     const keyword = msg.match[1].split('')
     const jpIndex = keyword.map(val => ja.indexOf(val))
-    const albhed = a.map(val => albhed[val])
-    return msg.send(albhed)
+    const translatedKeyword = jpIndex.map(val => albhed[val])
+    return msg.send(translatedKeyword)
   });
 }
