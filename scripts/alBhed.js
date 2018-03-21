@@ -44,7 +44,7 @@ module.exports = (robot) => {
 robot.respond(/ja-alb (.+)/i, function(msg) {
     const keyword = msg.match[1].split('')
     const jpIndex = keyword.map(val => ja.indexOf(val))
-    const translatedKeyword = jpIndex.map(val => albhed[val])
+    const translatedKeyword = jpIndex.map(val => albhed[val]).join('')
     return msg.send(translatedKeyword)
   });
 }
