@@ -8,8 +8,7 @@ module.exports = (robot) ->
   robot.respond /ちくわぶ (.*)/i, (msg) ->
     keyword = encodeURIComponent msg.match[1]
     url = "http://api.tiqav.com/search.json?q=#{keyword}"
-    request = msg.http(url)
-                .get()
+    request = msg.http(url).get()
     request (err, res, body) ->
       json = JSON.parse body
       i = Math.floor(Math.random() * json.length + 1)
