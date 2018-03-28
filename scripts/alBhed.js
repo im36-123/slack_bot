@@ -4,6 +4,25 @@
 //
 // Notes:
 //   ja-alb [keyword] で keyword をアルベド語に変換する
+const axios = require('axios');
+const APIKEY = process.env.GOO_KEY
+const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
+const OUTPU_TYPE = 'hiragana';
+
+const options = {
+  method: 'post',
+  url: BASE_URL,
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/json'
+  },
+  data: {
+    app_id: APIKEY,
+    output_type: OUTPU_TYPE
+  }
+};
+
+
 const ja = [
   'あ', 'い', 'う', 'え', 'お',
   'か', 'き', 'く', 'け', 'こ',
@@ -45,10 +64,22 @@ const albhed = [
 ]
 
 module.exports = (robot) => {
-robot.respond(/ja-alb (.+)/i, function(msg) {
-    const keyword = msg.match[1].split('')
-    const jpIndex = keyword.map(val => ja.indexOf(val))
-    const translatedKeyword = jpIndex.map(val => albhed[val]).join('')
-    return msg.send(`アルベド語では \`${translatedKeyword}\` ですよ`)
+robot.respond(/ja-tes (.+)/i, function(msg) {
+    options.data.sentence = msg.match[1]
+    axios(options)
+    .then((res) => {
+      const translatedKeyword = translate(res.data.converted)
+      return msg.send(`アルベド語では \`${translatedKeyword}\` ですよ。`)
+    })
+    .catch((err) => {
+      return msg.send(`おや、これはエラーのようですよ。\n\`\`\`\n${err}\n\`\`\``)
+    });
+
+    function translate(keyword) {
+      const splitedKeyword = keyword.split('')
+      const jpIndex = splitedKeyword.map(val => ja.indexOf(val))
+      const translatedKeyword = jpIndex.map(val => albhed[val]).join('')
+      return translatedKeyword
+    }
   });
 }
