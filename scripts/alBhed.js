@@ -22,7 +22,6 @@ const options = {
   }
 };
 
-
 const ja = [
   'あ', 'い', 'う', 'え', 'お',
   'か', 'き', 'く', 'け', 'こ',
@@ -64,7 +63,7 @@ const albhed = [
 ]
 
 module.exports = (robot) => {
-robot.respond(/ja-tes (.+)/i, function(msg) {
+robot.respond(/ja-alb (.+)/i, function(msg) {
     options.data.sentence = msg.match[1]
     axios(options)
     .then((res) => {
