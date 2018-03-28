@@ -5,7 +5,7 @@
 // Notes:
 //   ja-alb [keyword] で keyword をアルベド語に変換する
 const axios = require('axios');
-const APIKEY = process.env.GOO_KEY
+const APIKEY = process.env.GOO_API
 const BASE_URL = 'https://labs.goo.ne.jp/api/hiragana';
 const OUTPU_TYPE = 'hiragana';
 
