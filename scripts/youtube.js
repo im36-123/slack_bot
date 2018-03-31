@@ -5,7 +5,7 @@
 //   youtube [keyword] で keyword で検索された1番目の動画のタイトルとURLを返却する
 
 const axios = require('axios');
-const APIKEY = 'process.env.GOOGEL_YOUTUBE_API'
+const APIKEY = process.env.GOOGEL_YOUTUBE_API
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 const OPTIONS = {
