@@ -63,7 +63,7 @@ const albhed = [
 ]
 
 module.exports = (robot) => {
-robot.respond(/ja-alb (.+)/i, function(msg) {
+robot.respond(/ja-al (.+)/i, function(msg) {
     options.data.sentence = msg.match[1]
     axios(options)
     .then((res) => {
@@ -81,4 +81,18 @@ robot.respond(/ja-alb (.+)/i, function(msg) {
       return translatedKeyword
     }
   });
+
+robot.respond(/al-ja (.+)/i, function(msg) {
+    options.data.sentence = msg.match[1]
+      const translatedKeyword = translate(msg.match[1])
+      return msg.send(`日本語語では \`${translatedKeyword}\` ですよ。`)
+
+    function translate(keyword) {
+      const splitedKeyword = keyword.split('')
+      const albhedIndex = splitedKeyword.map(val => albhed.indexOf(val))
+      const translatedKeyword = albhedIndex.map(val => ja[val]).join('')
+      return translatedKeyword
+    }
+  });
+
 }
