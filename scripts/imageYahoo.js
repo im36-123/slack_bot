@@ -10,7 +10,7 @@ request = require('request');
 cheerio = require('cheerio');
 
 module.exports = function(robot) {
-  return robot.respond(/画像 (.+)/i, function(msg) {
+  return robot.respond(/image (.+)/i, function(msg) {
     var keyword;
     msg.send(`\`${msg.match[1]}\` の画像ですか。\n少々お待ち下さい。`);
     keyword = msg.match[1].replace(/\s/ig, '+');
