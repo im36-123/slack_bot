@@ -30,7 +30,7 @@ module.exports = function(robot) {
       const TITLE = RES_DATA.snippet.title
       const ID = RES_DATA.id.videoId
       const URL = `https://www.youtube.com/watch?v=${ID}`
-      msg.send(`\`${TITLE}\n${URL}\``)
+      msg.send(`\`${TITLE}\`\n${URL}\``)
     })
     .catch((err) => {
       msg.send(`おや、これはエラーのようですよ。\n\`\`\`\n${err}\n\`\`\``)
