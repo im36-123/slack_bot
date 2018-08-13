@@ -27,7 +27,7 @@ module.exports = function(robot) {
       $ = cheerio.load(body);
       $obj = $('#ISm .gridmodule');
       i = Math.floor(Math.random() * $obj.length);
-      image = $obj.eq(i).find('a').attr('href');
+      image = $obj.eq(i).find('img').attr('src');
       if (image) {
         return msg.send(image);
       } else if ($('.noRes')[0]) {
